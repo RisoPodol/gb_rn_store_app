@@ -30,7 +30,6 @@ export const useApi = <T, P = void>({
 
       try {
         const result = await fn(fetchParams);
-        console.log("API result:", result);
         setData(result);
       } catch (err: unknown) {
         const errorMessage =

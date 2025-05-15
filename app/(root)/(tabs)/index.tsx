@@ -1,40 +1,35 @@
-import { getProducts } from "@/app/lib/api";
-import { useApi } from "@/app/lib/useApi";
+import Card from "@/components/Card";
+import { getProducts } from "@/lib/api";
+import { useApi } from "@/lib/useApi";
+import { Product } from "@/types";
+import { router } from "expo-router";
 import { FlatList, Text, View } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Index() {
   const {
     data: products,
     loading: productsLoading,
     refetch,
-  } = useApi({
+  } = useApi<Product[]>({
     fn: getProducts,
   });
 
-  // const handleCardPress = (id: string) => router.push(`/products/${id}`);
+  const handleCardPress = (id: number) => router.push(`/products/${id}`);
 
   return (
-    <SafeAreaView className="h-full bg-white">
+    <View className="h-full bg-white">
       <FlatList
         ListEmptyComponent={<Text>No items</Text>}
-        ListHeaderComponent={<Text>Header</Text>}
         data={products}
         renderItem={({ item }) => {
-          const { id, title, price, description, category, image, rating } =
-            item;
-          return (
-            <View className="bg-primary">
-              <Text className="text-xl text-white">{item.title}</Text>
-            </View>
-          );
+          return <Card item={item} onPress={() => handleCardPress(item.id)} />;
         }}
-        keyExtractor={(item) => item.toString()} //TODO: change to actual ID
+        keyExtractor={(item) => item.id.toString()}
         numColumns={2}
         contentContainerClassName="pb-32"
-        columnWrapperClassName="flex gap-5 px-5 py-5"
+        columnWrapperClassName="flex gap-5 px-5"
         showsVerticalScrollIndicator={false}
       ></FlatList>
-    </SafeAreaView>
+    </View>
   );
 }

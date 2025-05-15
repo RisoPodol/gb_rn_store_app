@@ -1,6 +1,7 @@
-import { logout } from "@/app/lib/api";
-import { useGlobalContext } from "@/app/lib/global-provider";
 import icons from "@/constants/icons";
+import { logout } from "@/lib/api";
+import { useGlobalContext } from "@/lib/global-provider";
+import toasts from "@/utils/toasts";
 import React from "react";
 import {
   Alert,
@@ -12,7 +13,6 @@ import {
   View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import Toast from "react-native-toast-message";
 
 interface SettingsItemProps {
   icon: ImageSourcePropType;
@@ -61,24 +61,10 @@ const Profile = () => {
             const result = await logout();
 
             if (result) {
-              Toast.show({
-                topOffset: 60,
-                type: "success",
-                text1: "Logged out successfully",
-                position: "top",
-                visibilityTime: 3000,
-                autoHide: true,
-              });
+              toasts.success("Logged Out successfully");
               refetch();
             } else {
-              Toast.show({
-                topOffset: 60,
-                type: "error",
-                text1: "Failed to Logout",
-                position: "top",
-                visibilityTime: 3000,
-                autoHide: true,
-              });
+              toasts.error("Failed to Logout");
             }
           },
         },

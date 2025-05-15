@@ -1,7 +1,8 @@
 import icons from "@/constants/icons";
 import images from "@/constants/images";
-import { Redirect } from "expo-router";
-import React, { useState } from "react";
+import toasts from "@/utils/toasts";
+import { router } from "expo-router";
+import React, { useEffect, useState } from "react";
 import {
   Image,
   ScrollView,
@@ -11,24 +12,18 @@ import {
   View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import Toast from "react-native-toast-message";
-import { login } from "./lib/api";
-import { useGlobalContext } from "./lib/global-provider";
+import { login } from "../lib/api";
+import { useGlobalContext } from "../lib/global-provider";
 
-const SignIn = () => {
+const LogIn = () => {
   const { refetch, loading, isLoggedIn } = useGlobalContext();
 
-  if (!loading && isLoggedIn) {
-    Toast.show({
-      topOffset: 60,
-      type: "success",
-      text1: "Signed in successfully",
-      position: "top",
-      visibilityTime: 3000,
-      autoHide: true,
-    });
-    return <Redirect href="/" />;
-  }
+  useEffect(() => {
+    if (!loading && isLoggedIn) {
+      toasts.success("Logged In successfully new");
+      router.replace("/");
+    }
+  }, [loading, isLoggedIn]);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -63,14 +58,7 @@ const SignIn = () => {
       if (result) {
         refetch();
       } else {
-        Toast.show({
-          topOffset: 60,
-          type: "error",
-          text1: "Failed to Sign In",
-          position: "top",
-          visibilityTime: 3000,
-          autoHide: true,
-        });
+        toasts.error("Failed to Log In");
       }
     }
   };
@@ -91,11 +79,10 @@ const SignIn = () => {
       <ScrollView className="h-full px-6">
         <Image
           source={images.logoBig}
-          className="w-full px-20"
+          className="h-20 w-full my-20"
           resizeMode="contain"
         />
 
-        {/* SignIn / Registration */}
         <View className="flex flex-row border border-black-400 mb-4">
           <TouchableOpacity
             className="flex flex-1 bg-white p-3 items-center border border-black"
@@ -113,7 +100,6 @@ const SignIn = () => {
           </TouchableOpacity>
         </View>
 
-        {/* Email */}
         <View className="flex flex-col mb-3">
           <View
             className={`flex items-center border p-5 ${
@@ -143,7 +129,6 @@ const SignIn = () => {
           )}
         </View>
 
-        {/* Password */}
         <View className="flex flex-col mb-3">
           <View
             className={`flex flex-row items-center border p-5 ${
@@ -184,17 +169,15 @@ const SignIn = () => {
           )}
         </View>
 
-        {/* Forgot Password */}
         <TouchableOpacity className="my-4">
           <Text className="text-black-300 text-base underline">
             Forgot Password?
           </Text>
         </TouchableOpacity>
 
-        {/* Sign In */}
         <TouchableOpacity className="bg-primary p-5" onPress={handleLogin}>
           <Text className="text-white text-lg font-medium text-center uppercase">
-            Sign In
+            Log In
           </Text>
         </TouchableOpacity>
       </ScrollView>
@@ -202,4 +185,4 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+export default LogIn;

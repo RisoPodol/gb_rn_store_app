@@ -1,7 +1,9 @@
 import icons from "@/constants/icons";
+import images from "@/constants/images";
+import { PlatformPressable } from "@react-navigation/elements";
 import { Tabs } from "expo-router";
 import React from "react";
-import { Image, View } from "react-native";
+import { Image, TouchableOpacity, View } from "react-native";
 
 const TabIcon = ({ focused, icon }: { focused: boolean; icon: any }) => (
   <View className="flex-1 mt-3 flex flex-col items-center">
@@ -18,6 +20,12 @@ const TabsLayout = () => {
   return (
     <Tabs
       screenOptions={{
+        tabBarButton: (props) => (
+          <PlatformPressable
+            {...props}
+            android_ripple={{ color: "transparent" }}
+          />
+        ),
         tabBarShowLabel: false,
         tabBarStyle: {
           backgroundColor: "white",
@@ -31,8 +39,20 @@ const TabsLayout = () => {
       <Tabs.Screen
         name="index"
         options={{
-          title: "Home",
-          headerShown: false,
+          headerTitle: () => (
+            <Image
+              source={images.logoText}
+              className="size-28"
+              resizeMode="contain"
+            />
+          ),
+          headerTitleAlign: "center",
+          headerRight: () => (
+            <TouchableOpacity className="mr-6">
+              <Image source={icons.logout} className="size-5" />
+            </TouchableOpacity>
+          ),
+          tabBarIconStyle: {},
           tabBarIcon: ({ focused }) => (
             <TabIcon icon={icons.homeGb} focused={focused} />
           ),
