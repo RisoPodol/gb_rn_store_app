@@ -125,24 +125,57 @@ gb_rn_store_app/
 
 ## 📸 Screenshots
 
-### Log In / Registration
+### Log In
+>iOS
 
-![Log In / Registration](https://help.apple.com/assets/67EAFA00341984D9AE00EC98/67EAFA0586243791BA0154F5/en_US/0301de12154689eafd0c40ebb21e4932.png)
+![Log In](./screenshots/ios/preview/login.png)
 
----
+>Android
 
-### Home - Product List
-
-![Home Screen](https://help.apple.com/assets/67EAFA00341984D9AE00EC98/67EAFA0586243791BA0154F5/en_US/0301de12154689eafd0c40ebb21e4932.png)
-
----
-
-### Product Detail
-
-![Product Detail](https://help.apple.com/assets/67EAFA00341984D9AE00EC98/67EAFA0586243791BA0154F5/en_US/0301de12154689eafd0c40ebb21e4932.png)
+![Log In](./screenshots/android/previews/log_in.png)
 
 ---
 
-### Profile
+### Registration
+>iOS
 
-![Profile Screen](https://help.apple.com/assets/67EAFA00341984D9AE00EC98/67EAFA0586243791BA0154F5/en_US/0301de12154689eafd0c40ebb21e4932.png)
+![Log In](./screenshots/ios/preview/registration.png)
+
+>Android
+
+![Log In](./screenshots/android/previews/registration.png)
+
+---
+
+### Home Product list
+>iOS
+
+![Log In](./screenshots/ios/preview/home_product_list.png)
+
+>Android
+
+![Log In](./screenshots/android/previews/home_product_list.png)
+
+---
+
+### Product detail
+>iOS
+
+![Log In](./screenshots/ios/preview/product_detail.png)
+
+>Android
+
+![Log In](./screenshots/android/previews/product_detail.png)
+
+---
+
+### Profile / Log Out
+>iOS
+
+![Log In](./screenshots/ios/preview/profile_logout.png)
+
+>Android
+
+![Log In](./screenshots/android/previews/profile_logout.png)
+
+---
