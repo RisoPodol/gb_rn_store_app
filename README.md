@@ -28,6 +28,14 @@ https://github.com/RisoPodol/gb_rn_store_app.git
    npx expo start
    ```
    - You can run the app on an emulator or a physical device using Expo Go.
+  
+4. **Log In**
+
+   - You can use the this test user to Log in.
+   
+   username: `johnd`
+   
+   password: `m38rmF$`
 
 ---
 
@@ -47,9 +55,11 @@ gb_rn_store_app/
 │   ├── (root)/
 │   │   ├── (tabs)/                # Main tab navigation screens
 │   │   │   ├── cart.tsx           # Cart screen
-│   │   │   ├── explore.tsx        # Explore/browse screen
+│   │   │   ├── explore.tsx        # Explore product categories screen
 │   │   │   ├── index.tsx          # Home/product list screen
 │   │   │   └── profile.tsx        # User profile/settings screen
+│   │   └── category/              # Category detail screen
+│   │       └── [name].tsx
 │   │   └── products/              # Product detail screen
 │   │       └── [id].tsx
 │   ├── log-in.tsx                 # Login and registration screen
@@ -66,6 +76,7 @@ gb_rn_store_app/
 │   ├── SettingsItem.tsx
 │   ├── Shimmer.tsx
 │   ├── ShimmerCard.tsx
+│   ├── ShimmerCategory.tsx
 │   ├── ShimmerProductDetail.tsx
 │   └── TabIcon.tsx
 ├── constants/                     # Static data, icons, and images
@@ -81,6 +92,7 @@ gb_rn_store_app/
 │   └── index.ts
 ├── utils/                         # Utility functions and helpers
 │   ├── alerts.ts
+│   ├── methods.ts
 │   └── toasts.ts
 ├── .env.local                     # (Optional) Environment variables for testing credentials
 ├── tailwind.config.js             # Tailwind CSS config for NativeWind
@@ -166,6 +178,28 @@ gb_rn_store_app/
 >Android
 
 ![Log In](./screenshots/android/previews/product_detail.png)
+
+---
+
+### Categories
+>iOS
+
+![Log In](./screenshots/ios/preview/categories.png)
+
+>Android
+
+![Log In](./screenshots/android/previews/categories.png)
+
+---
+
+### Category Product list
+>iOS
+
+![Log In](./screenshots/ios/preview/category_product_list.png)
+
+>Android
+
+![Log In](./screenshots/android/previews/category_product_list.png)
 
 ---
 
