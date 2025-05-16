@@ -1,20 +1,10 @@
+import TabIcon from "@/components/TabIcon";
 import icons from "@/constants/icons";
 import images from "@/constants/images";
 import { PlatformPressable } from "@react-navigation/elements";
-import { Tabs } from "expo-router";
+import { router, Tabs } from "expo-router";
 import React from "react";
 import { Image, TouchableOpacity, View } from "react-native";
-
-const TabIcon = ({ focused, icon }: { focused: boolean; icon: any }) => (
-  <View className="flex-1 mt-3 flex flex-col items-center">
-    <Image
-      source={icon}
-      className="size-6"
-      tintColor={focused ? "#EB542D" : "#000000"}
-      resizeMode="contain"
-    />
-  </View>
-);
 
 const TabsLayout = () => {
   return (
@@ -48,8 +38,11 @@ const TabsLayout = () => {
           ),
           headerTitleAlign: "center",
           headerRight: () => (
-            <TouchableOpacity className="mr-6">
-              <Image source={icons.logout} className="size-5" />
+            <TouchableOpacity
+              className="mr-6"
+              onPress={() => router.push("/explore")}
+            >
+              <Image source={icons.search} className="size-5" />
             </TouchableOpacity>
           ),
           tabBarIconStyle: {},

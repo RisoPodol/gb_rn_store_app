@@ -49,10 +49,6 @@ export const useApi = <T, P = void>({
     }
   }, []);
 
-  //   if (!skip && params) {
-  //     fetchData(params);
-  //   }
-
   const refetch = async (newParams: P) => await fetchData(newParams);
 
   return { data, loading, error, refetch };

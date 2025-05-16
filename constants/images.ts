@@ -1,3 +1,4 @@
+import error from "@/assets/images/error.png";
 import logoSmall from "@/assets/images/icon.png";
 import logoBig from "@/assets/images/logo.png";
 import logoText from "@/assets/images/logo_text.png";
@@ -8,4 +9,5 @@ export default {
   logoBigBlackBG,
   logoBig,
   logoText,
+  error,
 };

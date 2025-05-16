@@ -2,15 +2,9 @@ import { createContext, ReactNode, useContext } from "react";
 import { getCurrentUser } from "./api";
 import { useApi } from "./useApi";
 
-interface User {
-  $id: string;
-  email: string;
-}
-
 interface GlobalContextType {
   isLoggedIn: boolean;
-  // user: User | null;
-  token: string | null;
+  token: string | null | undefined;
   loading: boolean;
   refetch: (newParams?: void) => Promise<void>;
 }

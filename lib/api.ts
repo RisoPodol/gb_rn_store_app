@@ -47,9 +47,16 @@ export const apiClient = axios.create({
 //   }
 // );
 
-export async function login() {
+export async function login({
+  username,
+  password,
+}: {
+  username: string;
+  password: string;
+}) {
   try {
     const credentials = { username: "johnd", password: "m38rmF$" };
+    // const credentials = { username: username.trim, password: password.trim }; // TODO: replace mock credentials with real ones
     const response = await apiClient.post(API_PATHS.LOGIN, credentials);
     if (response.status !== 200) {
       throw new Error(response.data.message || "Login failed");
@@ -63,21 +70,28 @@ export async function login() {
   }
 }
 
-// export async function register() {
-//   try {
-//     const user = {
-//       username: "richard",
-//       email: "richard@mail.com",
-//       password: "pass123",
-//     };
-//     const response = apiClient.post(API_PATHS.USERS, user);
+export async function register({
+  username,
+  email,
+  password,
+}: {
+  username: string;
+  email: string;
+  password: string;
+}) {
+  try {
+    const user = {
+      username: username.trim,
+      email: email.trim,
+      password: password.trim,
+    };
+    const response = apiClient.post(API_PATHS.USERS, user);
 
-//     return response;
-//   } catch (error) {
-//     console.error("Error during registration:", error);
-//     throw error;
-//   }
-// }
+    return response;
+  } catch (error) {
+    throw error;
+  }
+}
 
 export async function getCurrentUser() {
   try {
@@ -86,9 +100,8 @@ export async function getCurrentUser() {
       return token;
     }
   } catch (error) {
-    console.error("Error retrieving token:", error);
+    return null;
   }
-  return null;
 }
 
 export async function logout() {
@@ -109,7 +122,6 @@ export async function getProducts(): Promise<Product[]> {
 
     return response.data;
   } catch (error) {
-    console.error(error);
     return [];
   }
 }
@@ -128,7 +140,6 @@ export async function getProductById({
 
     return response.data;
   } catch (error) {
-    console.error(error);
     return null;
   }
 }
