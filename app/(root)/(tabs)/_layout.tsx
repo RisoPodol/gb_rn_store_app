@@ -4,7 +4,7 @@ import images from "@/constants/images";
 import { PlatformPressable } from "@react-navigation/elements";
 import { router, Tabs } from "expo-router";
 import React from "react";
-import { Image, TouchableOpacity, View } from "react-native";
+import { Image, TouchableOpacity } from "react-native";
 
 const TabsLayout = () => {
   return (

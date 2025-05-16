@@ -113,9 +113,18 @@ export async function logout() {
   }
 }
 
-export async function getProducts(): Promise<Product[]> {
+export async function getProducts({
+  category,
+}: {
+  category?: string;
+}): Promise<Product[]> {
   try {
-    const response = await apiClient.get(API_PATHS.PRODUCTS);
+    let path = API_PATHS.PRODUCTS;
+    if (category) {
+      path = API_PATHS.PRODUCTS_BY_CATEGORY(category);
+    }
+
+    const response = await apiClient.get(path);
     if (response.status !== 200) {
       throw new Error(response.data.message || "Get Products failed");
     }
@@ -141,5 +150,18 @@ export async function getProductById({
     return response.data;
   } catch (error) {
     return null;
+  }
+}
+
+export async function getCategories(): Promise<string[]> {
+  try {
+    const response = await apiClient.get(API_PATHS.CATEGORIES);
+    if (response.status !== 200) {
+      throw new Error(response.data.message || "Get Categories failed");
+    }
+
+    return response.data;
+  } catch (error) {
+    return [];
   }
 }

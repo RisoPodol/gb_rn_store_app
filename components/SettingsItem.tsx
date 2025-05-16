@@ -8,7 +8,7 @@ import {
 } from "react-native";
 
 interface Props {
-  icon: ImageSourcePropType;
+  icon?: ImageSourcePropType;
   title: string;
   onPress?: () => void;
   textStyle?: string;
@@ -27,7 +27,7 @@ const SettingsItem = ({
     onPress={onPress}
   >
     <View className="flex flex-row items-center gap-3">
-      <Image source={icon} className="size-6 " />
+      {icon && <Image source={icon} className="size-6 " />}
       <Text className={`text-lg font-semibold text-black-300 ${textStyle}`}>
         {title}
       </Text>

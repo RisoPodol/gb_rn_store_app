@@ -100,7 +100,7 @@ const Product = () => {
           </View>
 
           <View className="px-5 mt-7 flex gap-2">
-            <Text className="text-3xl font-rubik-extrabold" numberOfLines={2}>
+            <Text className="text-3xl" numberOfLines={2}>
               {product?.title}
             </Text>
 

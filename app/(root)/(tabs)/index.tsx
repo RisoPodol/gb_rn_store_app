@@ -10,6 +10,7 @@ export default function Index() {
   const { data, loading, refetch } = useApi({ fn: getProducts });
 
   const handleCardPress = (id: number) => router.push(`/products/${id}`);
+
   if (loading)
     return (
       <View className="h-full bg-white">
@@ -34,7 +35,7 @@ export default function Index() {
         ListEmptyComponent={
           <Error
             title="Product list is empty"
-            onTryAgain={refetch}
+            onTryAgain={() => refetch({})}
             buttonText="Load Again"
           />
         }
@@ -48,7 +49,7 @@ export default function Index() {
         columnWrapperClassName="flex gap-5 px-5"
         showsVerticalScrollIndicator={false}
         refreshControl={
-          <RefreshControl refreshing={loading} onRefresh={refetch} />
+          <RefreshControl refreshing={loading} onRefresh={() => refetch({})} />
         }
       ></FlatList>
     </View>
