@@ -56,7 +56,7 @@ export async function login({
 }) {
   try {
     const credentials = { username: "johnd", password: "m38rmF$" };
-    // const credentials = { username: username.trim, password: password.trim }; // TODO: replace mock credentials with real ones
+    // const credentials = { username: username.trim(), password: password.trim() }; // TODO: replace mock credentials with real ones
     const response = await apiClient.post(API_PATHS.LOGIN, credentials);
     if (response.status !== 200) {
       throw new Error(response.data.message || "Login failed");
@@ -81,9 +81,9 @@ export async function register({
 }) {
   try {
     const user = {
-      username: username.trim,
-      email: email.trim,
-      password: password.trim,
+      username: username.trim(),
+      email: email.trim(),
+      password: password.trim(),
     };
     const response = apiClient.post(API_PATHS.USERS, user);
 

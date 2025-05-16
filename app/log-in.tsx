@@ -110,6 +110,9 @@ const RegisterForm = ({ setIndex }: { setIndex: (index: number) => void }) => {
   const passwordRef = useRef<TextInput>(null);
 
   const handleRegister = async () => {
+    console.log("username: ", username);
+    console.log("email: ", email);
+    console.log("password: ", password);
     let hasError = false;
 
     if (!username) {
@@ -133,7 +136,8 @@ const RegisterForm = ({ setIndex }: { setIndex: (index: number) => void }) => {
     if (!password) {
       setPasswordError("Password is required");
       hasError = true;
-    } else if (password.trim.length < 8) {
+    } else if (password.trim().length < 8) {
+      console.log(password.trim().length);
       setPasswordError("Password does not match the criteria");
       hasError = true;
     } else {
@@ -186,6 +190,7 @@ const RegisterForm = ({ setIndex }: { setIndex: (index: number) => void }) => {
         isSecureTextEntry={true}
         onChangeText={(text) => {
           if (text) setPasswordError(null);
+          console.log("password", text);
           setPassword(text);
         }}
         returnKeyType="done"
